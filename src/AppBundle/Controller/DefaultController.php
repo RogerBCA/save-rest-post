@@ -29,4 +29,16 @@ class DefaultController extends Controller
 
         return $this->locals;
     }
+
+    /**
+     * @Route("/data/", name="data")
+     * @Template()
+     */
+    public function dataAction(Request $request)
+    {
+        $em = $this->getDoctrine();
+        $this->locals['data'] = $em->getRepository('AppBundle:SavePostEntity')->findAll();
+
+        return $this->locals;
+    }
 }

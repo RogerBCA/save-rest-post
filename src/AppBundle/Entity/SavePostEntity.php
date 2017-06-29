@@ -59,6 +59,15 @@ class SavePostEntity
      */
     public function getDatatext()
     {
-        return $this->datatext;
+        $data = array();
+        $dataarray = json_decode($this->datatext);
+
+        if ($dataarray) {
+            foreach ($dataarray as $key => $value) {
+                $data[] = $key.'='.$value;
+            }
+        }
+
+        return $data;
     }
 }
